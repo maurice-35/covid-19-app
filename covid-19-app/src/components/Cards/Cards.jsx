@@ -3,14 +3,15 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import CountUp from 'react-countup';
 
 // import { styles } from '@material-ui/system';
 
 import styles from './Cards.module.css';
 
-const Cards = ({ data: { confirmed, deaths, lastUpdate, recovered } }) => {
-	if(!confirmed) {
-		return 'Loading ...'
+const Cards = ({ data: { confirmed, recovered, deaths, lastUpdated } }) => {
+	if (!confirmed) {
+		return 'Loading ... ';
 	}
 
 	return (
@@ -19,10 +20,10 @@ const Cards = ({ data: { confirmed, deaths, lastUpdate, recovered } }) => {
 				<Grid item component={Card}>
 					<CardContent>
 						<Typography gutterBottom variant="h5" component="h2">
-							{confirmed.value}
+							Infected
 						</Typography>
 						<Typography variant="body2" color="textSecondary">
-							Real Data
+							<CountUp start={0} end={confirmed.value} duration={2.5} separator=',' />
 						</Typography>
 						<Typography gutterBottom variant="h5" component="h2">
 							Real Date
