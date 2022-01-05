@@ -1,23 +1,23 @@
 import axios from 'axios';
 
-const url = 'https://covid19.mathdro.id/api';
+const url = 'https://api.apify.com/v2/key-value-stores/tVaYRsPHLjNdNBu7S/records/LATEST?disableRedirect=true';
 
 export const fetchData = async () => {
 	try {
-		const { data: { confirmed, recovered, deaths, lastUpdate } } = await axios.get(url);
+		const { data: { infected, tested, recovered, deceased, lastUpdatedSource } } = await axios.get(url);
 
 
-		return { confirmed, recovered, deaths, lastUpdate };
+		return { infected, tested, recovered, deceased, lastUpdatedSource };
 	} catch (error) {
 
 	}
 }
 
-export const fetchDailyData = async () => {
-	try {
-		const { data } = await axios.get(`${url}/daily`)
-		console.log(data)
-	} catch (error) {
+// export const fetchDailyData = async () => {
+// 	try {
+// 		const { data } = await axios.get(`${url}/daily`)
+// 		console.log(data)
+// 	} catch (error) {
 
-	}
-}
+// 	}
+// }

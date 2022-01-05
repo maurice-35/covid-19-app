@@ -1,9 +1,35 @@
-import React from 'react';
+import React from "react";
+// import React, { useState, useEffect } from 'react';
+// import { fetchDailyData } from '../../api';
+// import { Line, Bar } from 'react-chartjs-2';
 
+// import styles from './Chart.modules.css';
 
 const Chart = () => {
-	
+	// const [dailyData, setDailyData] = useState({});
 
+	// useEffect(() => {
+	// 	const fetchAPI = async () => {
+	// 		setDailyData(await fetchDailyData())
+	// 	}
+	// 	console.log(dailyData)
+	// 	fetchAPI()
+	// }, [])
+
+	// const lineChart = (
+	// 	dailyData[0]
+	// 		? (
+	// 			<Line
+	// 				data={{
+	// 					labels: dailyData(({ date }) => date),
+	// 					datasets: [{
+	// 						data: dailyData(({ confirmed }) => confirmed),
+	// 					}, {
+
+	// 					}],
+	// 				}}
+	// 			/>) : null
+	// 		)
 	
 	return (
 		<div>

@@ -10,10 +10,14 @@
 	border-bottom: 10px solid red;
 }
 
+.tested {
+	border-bottom: 10px solid yellowgreen;
+}
+
 .recovered {
 	border-bottom: 10px solid green;
 }
 
-.deaths {
+.deceased {
 	border-bottom: 10px solid black;
 }
