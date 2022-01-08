@@ -4,14 +4,11 @@ const url = 'https://api.apify.com/v2/key-value-stores/tVaYRsPHLjNdNBu7S/records
 
 export const fetchData = async () => {
 	try {
-		const {data: { infected, tested, recovered, deceased, lastUpdatedSource } } = await axios.get(url);
+		const {data: [ infected, tested, recovered, deceased, lastUpdatedSource ] } = await axios.get(url);
 
 
-		return { infected, tested, recovered, deceased, lastUpdatedSource };
+		return [ infected, tested, recovered, deceased, lastUpdatedSource ];
 	} catch (error) {
 
 	}
 }
-
-
-

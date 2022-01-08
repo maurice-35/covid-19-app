@@ -5,23 +5,16 @@ import { fetchData } from './api';
 
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: {}
-    };
+  state = {
+    data: []
   }
+
 
   async componentDidMount() {
     const fetchedData = await fetchData();
     console.log(fetchedData)
 
     this.setState({ data: fetchedData });
-    // return fetchedData.json()
-  }
-
-  handleChange(event) {
-    this.setState({ data: event.target.value })
   }
 
 
@@ -30,7 +23,7 @@ class App extends React.Component {
 
     return (
       <div className={styles.container}>
-        <Cards data={data} />
+        <Cards data={[data]} />
         <CountrySelector />
         <Chart />
       </div>
