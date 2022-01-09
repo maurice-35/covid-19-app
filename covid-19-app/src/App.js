@@ -4,6 +4,7 @@ import styles from './App.module.css';
 import { fetchData } from './api';
 
 
+
 class App extends React.Component {
   state = {
     data: []
@@ -14,6 +15,8 @@ class App extends React.Component {
     const fetchedData = await fetchData();
     console.log(fetchedData)
 
+    this.setState({ confirmed: fetchedData.confirmed, deaths: fetchedData.deaths, recovered: fetchedData.recovered, active: fetchedData.active })
+    console.log(this.setState)
     this.setState({ data: fetchedData });
   }
 
@@ -23,7 +26,7 @@ class App extends React.Component {
 
     return (
       <div className={styles.container}>
-        <Cards data={[data]} />
+        <Cards data={data} />
         <CountrySelector />
         <Chart />
       </div>
