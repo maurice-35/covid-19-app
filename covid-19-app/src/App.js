@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Cards, Chart, CountrySelector } from './components';
 import styles from './App.module.css';
 import { fetchData } from './api';
@@ -6,27 +7,26 @@ import { fetchData } from './api';
 
 
 class App extends React.Component {
-  state = {
-    data: []
-  }
-
+  constructor() {
+    super(...arguments);
+  this.state = {
+    data: {},
+  };
+}
 
   async componentDidMount() {
     const fetchedData = await fetchData();
-    console.log(fetchedData)
-
-    this.setState({ confirmed: fetchedData.confirmed, deaths: fetchedData.deaths, recovered: fetchedData.recovered, active: fetchedData.active })
-    console.log(this.setState)
+    
     this.setState({ data: fetchedData });
+ 
   }
-
 
   render() {
     const { data } = this.state;
 
     return (
       <div className={styles.container}>
-        <Cards data={data} />
+        <Cards data={data}/>
         <CountrySelector />
         <Chart />
       </div>

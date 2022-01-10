@@ -6,12 +6,12 @@ import Grid from '@material-ui/core/Grid';
 import CountUp from 'react-countup';
 import cx from 'classnames';
 
-
 import styles from './Cards.module.css';
 
 
 
 const Cards = ({ data: { confirmed, deaths, recovered, active } }) => {
+
 
 
 	return (
