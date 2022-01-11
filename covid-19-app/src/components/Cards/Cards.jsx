@@ -11,8 +11,7 @@ import styles from './Cards.module.css';
 
 
 const Cards = ({ data: { confirmed, deaths, recovered, active } }) => {
-
-
+	
 
 	return (
 		<div className={styles.container}>
