@@ -10,18 +10,19 @@ class App extends React.Component {
   constructor() {
     super(...arguments);
   this.state = {
-    data: {},
+    data: [],
+    
   };
 }
 
   async componentDidMount() {
     const fetchedData = await fetchData();
-    this.setState({ data: fetchedData });
+    this.setState({ fetchedData });
     console.log(fetchedData);
   }
 
   render() {
-    const { data } = this.state;
+    const data  = this.state;
 
     return (
       <div className={styles.container}>
