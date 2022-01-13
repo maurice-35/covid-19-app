@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'https://covid2019-api.herokuapp.com/v2/current';
+const url = 'https://api.apify.com/v2/key-value-stores/tVaYRsPHLjNdNBu7S/records/LATEST?disableRedirect=true';
 
 export const fetchData = async () => {
 	try {

@@ -1,8 +1,7 @@
 import React from 'react';
-
+import axios from 'axios';
 import { Cards, Chart, CountrySelector } from './components';
 import styles from './App.module.css';
-import { fetchData } from './api';
 
 
 
@@ -10,23 +9,24 @@ class App extends React.Component {
   constructor() {
     super(...arguments);
   this.state = {
-    data: [],
+    covidData: [],
     
   };
 }
 
   async componentDidMount() {
-    const fetchedData = await fetchData();
-    this.setState({ fetchedData });
-    console.log(fetchedData);
+    const covidData = await axios.get(`https://covid2019-api.herokuapp.com/v2/current`);
+    this.setState({ covidData });
+    console.log(covidData.data.data[0]);
   }
 
   render() {
-    const data  = this.state;
+    const { covidData }  = this.state;
+
 
     return (
       <div className={styles.container}>
-        <Cards data={data}/>
+        <Cards data={covidData}/>
         <CountrySelector />
         <Chart />
       </div>
