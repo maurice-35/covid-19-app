@@ -5,7 +5,7 @@ const Chart = () => {
 	
 	return (
 		<div>
-			<h1>Chart</h1>
+			<h1>Char</h1>
 		</div>
 	)
 }
