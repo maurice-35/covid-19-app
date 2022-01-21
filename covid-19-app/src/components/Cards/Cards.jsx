@@ -7,24 +7,24 @@ import CountUp from 'react-countup';
 import cx from 'classnames';
 
 import styles from './Cards.module.css';
-import App from '../../App';
 
-
-
-	const Cards = () => {
-
+const Cards = ({ modifiedData: confirmed, recovered,  deaths, active }) => {
+	
+	if (!confirmed) {
+		return "Still loading ..."
+	}
 
 
 	return (
-		<div className={styles.container}>
+		<div className={styles.container} >
 			<Grid container spacing={3} justifyContent="center">
 				<Grid item component={Card} xs={12} md={3} className={cx(styles.card, styles.confirmed)}>
 					<CardContent>
 						<Typography gutterBottom variant="h5">
-							Infected
+							Confirmed
 						</Typography>
 						<Typography variant="body2" color="textSecondary">
-							<CountUp start={0} end={App.infected} duration={2.5} separator="," />
+							<CountUp start={0} end={confirmed} duration={2.5} separator="," />
 						</Typography>
 						<Typography gutterBottom variant="h5" component="h5">
 						</Typography>
@@ -36,10 +36,10 @@ import App from '../../App';
 				<Grid item component={Card} xs={12} md={3} className={cx(styles.card, styles.deaths)}>
 					<CardContent>
 						<Typography gutterBottom variant="h5" component="h5">
-							Tested
+							Recovered
 						</Typography>
 						<Typography variant="body2" color="textSecondary">
-							<CountUp start={0} end={App.tested} duration={2.5} separator=',' />
+							<CountUp start={0} end={recovered} duration={2.5} separator=',' />
 						</Typography>
 						<Typography gutterBottom variant="h5" component="h5">
 						</Typography>
@@ -51,10 +51,10 @@ import App from '../../App';
 				<Grid item component={Card} xs={12} md={3} className={cx(styles.card, styles.recovered)}>
 					<CardContent>
 						<Typography gutterBottom variant="h5" component="h5">
-							Recovered
+							Deaths
 						</Typography>
 						<Typography variant="body2" color="textSecondary">
-							<CountUp start={0} end={App.recovered} duration={2.5} separator=',' />
+							<CountUp start={0} end={deaths} duration={2.5} separator=',' />
 						</Typography>
 						<Typography gutterBottom variant="h5" component="h5">
 						</Typography>
@@ -66,10 +66,10 @@ import App from '../../App';
 				<Grid item component={Card} xs={12} md={3} className={cx(styles.card, styles.active)}>
 					<CardContent>
 						<Typography gutterBottom variant="h5" component="h5">
-							Deceased
+							Active
 						</Typography>
 						<Typography variant="body2" color="textSecondary">
-							<CountUp start={0} end={App.deceased} duration={2.5} separator=',' />
+							<CountUp start={0} end={active} duration={2.5} separator=',' />
 						</Typography>
 						<Typography gutterBottom variant="h5" component="h5">
 						</Typography>

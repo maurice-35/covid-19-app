@@ -1,32 +1,35 @@
 import React from 'react';
-import axios from 'axios';
 import { Cards, Chart, CountrySelector } from './components';
 import styles from './App.module.css';
+import { fetchData } from './api';
 
 
 
-class App extends React.Component {
+export class App extends React.Component {
   constructor() {
     super(...arguments);
   this.state = {
-    covidData: [],
+    modifiedData: [],
     
   };
 }
 
   async componentDidMount() {
-    const covidData = await axios.get(`https://covid2019-api.herokuapp.com/v2/current`);
-    this.setState({ covidData });
-    console.log(covidData.data.data[0]);
-  }
+    const fetchedData = await fetchData();
 
+    this.setState({ modifiedData: fetchedData });
+    // console.log(fetchedData)
+    this.setState({ fetchedData });
+  }
+  
+		
   render() {
-    const { covidData }  = this.state;
+    const { modifiedData }  = this.state;
 
 
     return (
       <div className={styles.container}>
-        <Cards data={covidData}/>
+        <Cards data={modifiedData}/>
         <CountrySelector />
         <Chart />
       </div>
