@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
@@ -7,13 +7,30 @@ import CountUp from 'react-countup';
 import cx from 'classnames';
 
 import styles from './Cards.module.css';
+import { fetchData } from '../../api';
 
-const Cards = ({ modifiedData: confirmed, recovered,  deaths, active }) => {
+
+const Cards = () => {
+	const [cardinfo, setCardinfo] = useState({
+		confirmed: '',
+		recovered: '',
+		deaths: '',
+		active: ''
+	})
+
+	useEffect(() => {
+		const getData = async () => {
+			try {
+				const  cardInfo  = await fetchData()
+				// console.log(cardInfo)
+				setCardinfo(cardInfo)
+			} catch (err) {
+				console.log(err)
+			}
+		}
+		getData()
+	}, []);
 	
-	if (!confirmed) {
-		return "Still loading ..."
-	}
-
 
 	return (
 		<div className={styles.container} >
@@ -24,7 +41,7 @@ const Cards = ({ modifiedData: confirmed, recovered,  deaths, active }) => {
 							Confirmed
 						</Typography>
 						<Typography variant="body2" color="textSecondary">
-							<CountUp start={0} end={confirmed} duration={2.5} separator="," />
+							<CountUp start={0} end={cardinfo.confirmed} duration={2.5} separator="," />
 						</Typography>
 						<Typography gutterBottom variant="h5" component="h5">
 						</Typography>
@@ -39,7 +56,7 @@ const Cards = ({ modifiedData: confirmed, recovered,  deaths, active }) => {
 							Recovered
 						</Typography>
 						<Typography variant="body2" color="textSecondary">
-							<CountUp start={0} end={recovered} duration={2.5} separator=',' />
+							<CountUp start={0} end={cardinfo.recovered} duration={2.5} separator=',' />
 						</Typography>
 						<Typography gutterBottom variant="h5" component="h5">
 						</Typography>
@@ -54,7 +71,7 @@ const Cards = ({ modifiedData: confirmed, recovered,  deaths, active }) => {
 							Deaths
 						</Typography>
 						<Typography variant="body2" color="textSecondary">
-							<CountUp start={0} end={deaths} duration={2.5} separator=',' />
+							<CountUp start={0} end={cardinfo.deaths} duration={2.5} separator=',' />
 						</Typography>
 						<Typography gutterBottom variant="h5" component="h5">
 						</Typography>
@@ -69,7 +86,7 @@ const Cards = ({ modifiedData: confirmed, recovered,  deaths, active }) => {
 							Active
 						</Typography>
 						<Typography variant="body2" color="textSecondary">
-							<CountUp start={0} end={active} duration={2.5} separator=',' />
+							<CountUp start={0} end={cardinfo.active} duration={2.5} separator=',' />
 						</Typography>
 						<Typography gutterBottom variant="h5" component="h5">
 						</Typography>

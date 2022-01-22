@@ -15,14 +15,15 @@ export class App extends React.Component {
 }
 
   async componentDidMount() {
+    
     const fetchedData = await fetchData();
 
     this.setState({ modifiedData: fetchedData });
     // console.log(fetchedData)
     this.setState({ fetchedData });
   }
-  
-		
+
+
   render() {
     const { modifiedData }  = this.state;
 
