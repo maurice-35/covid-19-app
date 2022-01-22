@@ -9,9 +9,12 @@ export const fetchData = async () => {
 			confirmed: data.data[0].confirmed,
 			recovered: data.data[0].recovered,
 			deaths: data.data[0].deaths,
-			active: data.data[0].active
+			active: data.data[0].active,
+			dt: data.dt,
+			ts: data.ts
 		}
-		return modifiedData
+		// return modifiedData
+		console.log(modifiedData)
 	} catch (error) {
 		return error;
 	}

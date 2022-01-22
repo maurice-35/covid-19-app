@@ -61,7 +61,7 @@ const Cards = () => {
 						<Typography gutterBottom variant="h5" component="h5">
 						</Typography>
 						<Typography variant="body2" color="textSecondary" component="h5">
-							Number of deaths from COVID-19
+							Number of recoveries from COVID-19
 						</Typography>
 					</CardContent>
 				</Grid>
@@ -76,7 +76,7 @@ const Cards = () => {
 						<Typography gutterBottom variant="h5" component="h5">
 						</Typography>
 						<Typography variant="body2" color="textSecondary" component="h5">
-							Number of recoveries from COVID-19
+							Number of deaths from COVID-19
 						</Typography>
 					</CardContent>
 				</Grid>
