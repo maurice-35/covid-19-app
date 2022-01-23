@@ -15,13 +15,14 @@ const Cards = () => {
 		confirmed: '',
 		recovered: '',
 		deaths: '',
-		active: ''
+		active: '',
+		dt: '',
 	})
 
 	useEffect(() => {
 		const getData = async () => {
 			try {
-				const  cardInfo  = await fetchData()
+				const cardInfo = await fetchData()
 				// console.log(cardInfo)
 				setCardinfo(cardInfo)
 			} catch (err) {
@@ -30,7 +31,7 @@ const Cards = () => {
 		}
 		getData()
 	}, []);
-	
+
 
 	return (
 		<div className={styles.container} >
@@ -48,6 +49,7 @@ const Cards = () => {
 						<Typography variant="body2" color="textSecondary" component="h5">
 							Number of confirmed cases of COVID-19
 						</Typography>
+						<Typography>Last updated {new Date(cardinfo.dt).toDateString()}</Typography>
 					</CardContent>
 				</Grid>
 				<Grid item component={Card} xs={12} md={3} className={cx(styles.card, styles.deaths)}>
@@ -63,6 +65,7 @@ const Cards = () => {
 						<Typography variant="body2" color="textSecondary" component="h5">
 							Number of recoveries from COVID-19
 						</Typography>
+						<Typography>Last updated {new Date(cardinfo.dt).toDateString()}</Typography>
 					</CardContent>
 				</Grid>
 				<Grid item component={Card} xs={12} md={3} className={cx(styles.card, styles.recovered)}>
@@ -78,6 +81,7 @@ const Cards = () => {
 						<Typography variant="body2" color="textSecondary" component="h5">
 							Number of deaths from COVID-19
 						</Typography>
+						<Typography>Last updated {new Date(cardinfo.dt).toDateString()}</Typography>
 					</CardContent>
 				</Grid>
 				<Grid item component={Card} xs={12} md={3} className={cx(styles.card, styles.active)}>
@@ -93,6 +97,7 @@ const Cards = () => {
 						<Typography variant="body2" color="textSecondary" component="h5">
 							Number of active cases of COVID-19
 						</Typography>
+						<Typography>Last updated {new Date(cardinfo.dt).toDateString()}</Typography>
 					</CardContent>
 				</Grid>
 			</Grid>
